@@ -540,30 +540,37 @@ var AnalyseDataModule = (function ($)
         }
 
         ////////////////////// Domaine d'activité de la formation //////////////////////
-        {
-            //en rapport direct avec la certification visée
-            if(userData.actualActivityField == trainingActivityField)
-            {
-                score += 10; //TODO: pas forcément dans celui actuel
-            }
-            else 
-            {
-                return -1;
-            }
-        }
-
         ////////////////////// Ancienneté //////////////////////
         {
+            var totalDurationInTrainingActivityFieldInDay = 0;
+
             //qui justifie d’au moins un an d’expérience
-            var startOneYearAgo = new Date(Date.now() - 31556952000);
-            if(new Date(userData.actualStartDate).getTime() <= startOneYearAgo.getTime())
+            //en rapport direct avec la certification visée
+            for (let contractIndex = 0; contractIndex < userData.contractHistory.length; contractIndex++) 
             {
-                score += 10; //TODO: pas seulement dans le contrat actuel c'est au total (mais plus c'est loin moins c'est pris en compte)
+                const contract = userData.contractHistory[contractIndex];
+
+                //Si le contrat est dans le même domaine que la VAE
+                if(contract.activityField == userData.trainingActivityField)
+                {
+                    //on calcul la durée de celui-ci
+                    var diffResult = new Date(contract.endDate).getTime() - new Date(contract.startDate).getTime();
+                    var dateDiff = new Date(diffResult);
+                    var daysDiff = dateDiff.getTime() / 86400000;
+
+                    //on l'ajoute au total
+                    totalDurationInTrainingActivityFieldInDay += daysDiff;
+                }
+
             }
-            else
+
+            //au moins 1 dans dans le dommaine demandé
+            if(totalDurationInTrainingActivityFieldInDay < 365)
             {
                 return -1;
             }
+            
+            score += 20; //deux critères d'un coup
         } 
 
         ////////////////////// Délai de franchise //////////////////////
