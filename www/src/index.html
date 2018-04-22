@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Outil formation</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/noui/nouislider.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="POST">
+				<span class="contact100-form-title">
+					Trouver un outil de formation adapté
+				</span>
+
+				<fieldset class="contact100-form wrap-input100">
+					<legend>Votre situation actuelle</legend>
+					<div class="wrap-input100 input100-select bg1">
+						<span class="label-input100">Type de contrat actuel *</span>
+						<div>
+							<select class="js-select2" name="actualContractType">
+								<option value="0">Merci de choisir une valeur</option>
+								<option value="1">CDI</option>
+								<option value="2">CDD</option>
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+					</div>
+
+					<div class="wrap-input100 validate-input bg1" data-validate="Merci d'entrer votre salaire mensuel brut actuel">
+						<span class="label-input100">Salaire mensuel brut actuel *</span>
+						<input class="input100" type="number" name="actualSalary" placeholder="Entrer votre salaire mensuel brut actuel">
+					</div>
+				</fieldset>
+
+				<fieldset class="contact100-form wrap-input100">
+					<legend>Votre projet de formation</legend>
+					<div class="wrap-input100 input100-select bg1">
+						<span class="label-input100">Objectif de la formation *</span>
+						<div>
+							<select class="js-select2" name="trainingObjectif">
+								<option value="0">Merci de choisir une valeur</option>
+								<option value="1">Reconversion</option>
+								<option value="2">Accéder à un niveau de qualification supérieure</option>
+								<option value="3">enrichir ses connaissances</option>
+								<option value="4">Préparation examen</option>
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+					</div>
+
+					<div class="wrap-input100 input100-select bg1">
+						<span class="label-input100">Dans votre dommaine d'activité ? *</span>
+
+						<div class="contact100-form-radio m-t-15">
+							<input class="input-radio100" id="radio1" type="radio" name="activityField" value="0" checked="checked">
+							<label class="label-radio100" for="radio1">
+								Non
+							</label>
+						</div>
+
+						<div class="contact100-form-radio">
+							<input class="input-radio100" id="radio2" type="radio" name="activityField" value="1">
+							<label class="label-radio100" for="radio2">
+								Oui
+							</label>
+						</div>
+					</div>
+
+					<div class="wrap-input100 validate-input bg1" data-validate="Merci d'entrer prévu de début">
+						<span class="label-input100">Date de début prévu *</span>
+						<input class="input100" type="date" name="trainingDate" placeholder="Entrer la date de début prévue">
+					</div>
+
+					<div class="wrap-input100 validate-input bg1" data-validate="Merci d'entrer la durée prévue (en heure)">
+						<span class="label-input100">Durée prévue en heure *</span>
+						<input class="input100" type="number" name="trainingDuration" placeholder="Entrer la durée prévue">
+					</div>
+
+					<div class="wrap-input100 input100-select bg1">
+						<span class="label-input100">Faite en temps ? *</span>
+
+						<div class="contact100-form-radio m-t-15">
+							<input class="input-radio100" id="radio3" type="radio" name="trainingTypeTime" value="0" checked="checked">
+							<label class="label-radio100" for="radio3">
+								Temps complet
+							</label>
+						</div>
+
+						<div class="contact100-form-radio">
+							<input class="input-radio100" id="radio4" type="radio" name="trainingTypeTime" value="1">
+							<label class="label-radio100" for="radio4">
+								Temps partiel
+							</label>
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset class="contact100-form wrap-input100">
+					<legend>Votre historique professionnel</legend>
+
+					<div id="historyPro">
+						
+					</div>
+
+					<button type="button" class="wrap-input100 contact100-form-btn" id="addHistoryProButton">
+						<span>
+							Ajouter
+						</span>
+					</button>
+				</fieldset>
+
+				<fieldset class="contact100-form wrap-input100">
+					<legend>Votre historique de formation</legend>
+
+					<div id="historyTraining">
+						
+					</div>
+	
+					<button type="button" class="wrap-input100 contact100-form-btn" id="addHistoryTrainingButton">
+						<span>
+							Ajouter
+						</span>
+					</button>
+
+				</fieldset>
+				<!--
+
+				<div class="wrap-input100 input100-select bg1">
+					<span class="label-input100">Quel secteur ? *</span>
+
+					<div class="contact100-form-radio m-t-15">
+						<input class="input-radio100" id="radio1" type="radio" name="sectorType" value="0" checked="checked">
+						<label class="label-radio100" for="radio1">
+							Privé
+						</label>
+					</div>
+
+					<div class="contact100-form-radio">
+						<input class="input-radio100" id="radio2" type="radio" name="sectorType" value="1">
+						<label class="label-radio100" for="radio2">
+							Publique
+						</label>
+					</div>
+				</div>
+
+				<div class="wrap-input100 validate-input bg1" data-validate="Merci d'enter votre salaire">
+					<span class="label-input100">Votre salaire *</span>
+					<input class="input100" type="number" name="salary" placeholder="Entrer votre salaire">
+				</div>
+
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+					<span class="label-input100">FULL NAME *</span>
+					<input class="input100" type="text" name="name" placeholder="Enter Your Name">
+				</div>
+
+				
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
+					<span class="label-input100">Email *</span>
+					<input class="input100" type="text" name="email" placeholder="Enter Your Email ">
+				</div>
+				
+
+				<div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Phone</span>
+					<input class="input100" type="text" name="phone" placeholder="Enter Number Phone">
+				</div>
+
+				<div class="wrap-input100 input100-select bg1">
+					<span class="label-input100">Needed Services *</span>
+					<div>
+						<select class="js-select2" name="service">
+							<option>Please chooses</option>
+							<option>eCommerce Bussiness</option>
+							<option>UI/UX Design</option>
+							<option>Online Services</option>
+						</select>
+						<div class="dropDownSelect2"></div>
+					</div>
+				</div>
+
+				<div class="w-full dis-none js-show-service">
+					<div class="wrap-contact100-form-radio">
+						<span class="label-input100">What type of products do you sell?</span>
+
+						<div class="contact100-form-radio m-t-15">
+							<input class="input-radio100" id="radio1" type="radio" name="type-product" value="physical" checked="checked">
+							<label class="label-radio100" for="radio1">
+								Phycical Products
+							</label>
+						</div>
+
+						<div class="contact100-form-radio">
+							<input class="input-radio100" id="radio2" type="radio" name="type-product" value="digital">
+							<label class="label-radio100" for="radio2">
+								Digital Products
+							</label>
+						</div>
+
+						<div class="contact100-form-radio">
+							<input class="input-radio100" id="radio3" type="radio" name="type-product" value="service">
+							<label class="label-radio100" for="radio3">
+								Services Consulting
+							</label>
+						</div>
+					</div>
+
+					<div class="wrap-contact100-form-range">
+						<span class="label-input100">Budget *</span>
+
+						<div class="contact100-form-range-value">
+							$<span id="value-lower">610</span> - $<span id="value-upper">980</span>
+							<input type="text" name="from-value">
+							<input type="text" name="to-value">
+						</div>
+
+						<div class="contact100-form-range-bar">
+							<div id="filter-bar"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Please Type Your Message">
+					<span class="label-input100">Message</span>
+					<textarea class="input100" name="message" placeholder="Your message here..."></textarea>
+				</div>
+				-->
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+						<span>
+							Trouver un outil de formation
+							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+<!--===============================================================================================-->
+	<script src="../libraries/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../libraries/livejs/live.js"></script>
+<!--===============================================================================================-->
+	<script src="../libraries/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../libraries/bootstrap/js/popper.js"></script>
+	<script src="../libraries/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../libraries/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+
+			//dropdown display
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+
+			//dropdown show details
+			$(".js-select2").each(function(){
+				$(this).on('select2:close', function (e){
+					if($(this).val() == "Please chooses") {
+						$('.js-show-service').slideUp();
+					}
+					else {
+						$('.js-show-service').slideUp();
+						$('.js-show-service').slideDown();
+					}
+				});
+			});
+		})
+
+	</script>
+<!--===============================================================================================-->
+	<script src="../libraries/daterangepicker/moment.min.js"></script>
+	<script src="../libraries/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../libraries/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="../libraries/noui/nouislider.min.js"></script>
+	<!--
+	<script>
+	    var filterBar = document.getElementById('filter-bar');
+
+	    noUiSlider.create(filterBar, {
+	        start: [ 1500, 3900 ],
+	        connect: true,
+	        range: {
+	            'min': 1500,
+	            'max': 7500
+	        }
+	    });
+
+	    var skipValues = [
+	    document.getElementById('value-lower'),
+	    document.getElementById('value-upper')
+	    ];
+
+	    filterBar.noUiSlider.on('update', function( values, handle ) {
+	        skipValues[handle].innerHTML = Math.round(values[handle]);
+	        $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+	        $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+	    });
+	</script>
+	-->
+
+	<!--===============================================================================================-->
+	<script>
+		var numberOfProHistory = 0;
+		var numberOfTrainingHistory = 0;
+	</script>
+
+	<script src="js/modifyForm.js"></script>
+	
+	<script src="js/analyseData.js"></script>
+
+	<script src="js/validateForm.js"></script>
+
+</body>
+</html>
