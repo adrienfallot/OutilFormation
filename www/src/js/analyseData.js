@@ -164,11 +164,14 @@ var AnalyseDataModule = (function ($)
 
         ////////////////////// Ancienneté //////////////////////
         {
-            //TODO: ajouter le contrat courant dans le calcul
             //historique CDI
             if(userData.actualContractType == contractTypeEnum.CDI)
             {
-                var totalDurationInDay = 0;
+                var diffActualResult = new Date(userData.actualStartDate).getTime() - Date.now().getTime();
+                var dateDiffActual = new Date(diffResult);
+                var daysDiffActual = dateDiff.getTime() / 86400000;
+
+                var totalDurationInDay = daysDiffActual;
                 var oneYearContract = false;
 
                 for (let contractIndex = 0; contractIndex < userData.contractHistory.length; contractIndex++) 
@@ -199,15 +202,64 @@ var AnalyseDataModule = (function ($)
             }
             //historique CDD
             else if(userData.actualContractType == contractTypeEnum.CDD)
-            {
+            {                
                 var totalDurationInDay = 0;
                 var totalCDDInDayDuringLastYear = 0;
                 var totalInDayDuringFiveLastYear = 0;
+
+                ////////////////// contrat actuel //////////////////////////
+
+                //calcul du nombre de jour depuis le début du contrat actuel
+                var diffActualResult = new Date(userData.actualStartDate).getTime() - Date.now().getTime();
+                var dateDiffActual = new Date(diffResult);
+                var daysDiffActual = dateDiff.getTime() / 86400000;
+
+                //On ajoute la durée (en jour) du contract actuel au total
+                totalDurationInDay += daysDiffActual;
+                
+                var startOneYearAgo = new Date(Date.now() - 31556952000);
+                //Si le contrat à débuté après le début de la denière année
+                if(new Date(userData.actualStartDate).getTime() > startOneYearAgo.getTime())
+                {
+                    //On ajoute sa durée dans le total de la denière année
+                    totalCDDInDayDuringLastYear += daysDiffActual;
+                }
+                else 
+                {
+                    //Sinon on calcul le temps écouler depuis le début de l'année
+                    var diffFromYearStart = startOneYearAgo - Date.now().getTime(); //Total temps passé depuis de début de l'année
+                    var dateDiffFromYearStart = new Date(diffFromYearStart);
+                    var daysFromYearStart = dateDiffFromYearStart / 86400000;
+
+                    //Et on l'ajoute dans le total de la denière année
+                    totalCDDInDayDuringLastYear += daysFromYearStart;
+                }
+
+                var startFiveYearAgo = new Date(Date.now() - (315569512000 * 5));
+                //Si le contract actuel à débute après le début des 5 dernières année
+                if(new Date(userData.actualStartDate).getTime() > startFiveYearAgo.getTime())
+                {
+                    //On ajoute sa durée dans le total des cinq dernière année
+                    totalInDayDuringFiveLastYear += daysDiffActual;
+                }
+                else 
+                {
+                    //Sinon on calcul le temps écouler depuis le début des 5 dernières années
+                    var diffFrom5YearStart = startFiveYearAgo - Date.now().getTime(); //Total temps passé depuis de début des 5 dernières année
+                    var dateDiffFrom5YearStart = new Date(diffFrom5YearStart);
+                    var daysFrom5YearStart = dateDiffFrom5YearStart / 86400000;
+
+                    //Et on l'ajoute dans le total des 5 dernières années
+                    totalInDayDuringFiveLastYear += dadaysFrom5YearStartysDiffActual;
+                }
+
+                ////////////////////// historique des contrats ////////////////////////////
 
                 for (let contractIndex = 0; contractIndex < userData.contractHistory.length; contractIndex++) 
                 {
                     const contract = userData.contractHistory[contractIndex];
 
+                    //Calcul de la durée du contrat
                     var diffResult = new Date(contract.endDate).getTime() - new Date(contract.startDate).getTime();
                     var dateDiff = new Date(diffResult);
                     var daysDiff = dateDiff.getTime() / 86400000;
@@ -215,42 +267,56 @@ var AnalyseDataModule = (function ($)
                     //calcul total CDD durant la dernière année
                     if(contract.contractType == contractTypeEnum.CDD)
                     {
-                        var startOneYearAgo = new Date(Date.now() - 31556952000);
+                        //Si le CDD à débuter après le début de l'année en cours
                         if(new Date(contract.startDate).getTime() > startOneYearAgo.getTime())
                         {
+                            //alors on ajoute sa durée au total de l'année
                             totalCDDInDayDuringLastYear += daysDiff;
                         }
                         else 
                         {
-                            var diffFromEnd = new Date(contract.endDate).getTime() - startOneYearAgo;
-                            var dateDiffFromEnd = new Date(diffFromEnd);
-                            var daysFromEndDiff = dateDiffFromEnd / 86400000;
+                            //si la fin du CDD se trouve dans l'année en cours
+                            if(new Date(contract.endDate).getTime() > startFiveYearAgo.getTime())
+                            {
+                                //Sinon on calcul la durée entre le début de l'année et la fin du contrat
+                                var diffFromEnd = new Date(contract.endDate).getTime() - startOneYearAgo;
+                                var dateDiffFromEnd = new Date(diffFromEnd);
+                                var daysFromEndDiff = dateDiffFromEnd / 86400000;
 
-                            totalCDDInDayDuringLastYear += daysFromEndDiff;
+                                //Et on l'ajoute au total de jours de l'année précédante
+                                totalCDDInDayDuringLastYear += daysFromEndDiff; 
+                            }
+
                         }
                     }
 
                     //calcul total durant 5 dernières années
-                    var startFiveYearAgo = new Date(Date.now() - (31556952000 * 5));
+                    //Si le contrat à débuté après le début des 5 année précédante
                     if(new Date(contract.startDate).getTime() > startFiveYearAgo.getTime())
                     {
-                        if(new Date(contract.startDate).getTime() > startFiveYearAgo.getTime())
+                        //alors on ajoute sa durée au total des 5 année
+                        totalInDayDuringFiveLastYear += daysDiff;
+                    }
+                    else 
+                    {
+                        //si la fin du contrat se trouve dans les 5 années précédante
+                        if(new Date(contract.endDate).getTime() > startFiveYearAgo.getTime())
                         {
-                            totalInDayDuringFiveLastYear += daysDiff;
-                        }
-                        else 
-                        {
+                            //Sinon on calcul la durée entre le début des 5 annéee précédante et la fin du contrat
                             var diffFromEnd = new Date(contract.endDate).getTime() - startFiveYearAgo;
                             var dateDiffFromEnd = new Date(diffFromEnd);
                             var daysFromEndDiff = dateDiffFromEnd / 86400000;
 
-                            totalInDayDuringFiveLastYear += daysFromEndDiff;
+                            //Et on l'ajoute au total de jours de l'année précédante
+                            totalCDDInDayDuringLastYear += daysFromEndDiff; 
                         }
+
                     }
 
-
+                    //dans tout les cas on ajoute sa durée au total
                     totalDurationInDay += daysDiff;
                 }
+
                 //Activité salarié d'au moins 2 ans consécutifs ou non
                 if(totalDurationInDay <= (365 * 2))
                 {
