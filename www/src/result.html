@@ -1,0 +1,115 @@
+<head>
+	<title>Outil formation - Result</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../libraries/noui/nouislider.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+            <span class="contact100-form-title">
+                Vos outils de formation adaptés
+            </span>
+        
+            <div id="tools">
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="../libraries/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../libraries/livejs/live.js"></script>
+    <!--===============================================================================================-->
+    <script src="../libraries/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../libraries/bootstrap/js/popper.js"></script>
+    <script src="../libraries/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../libraries/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function(){
+
+            //dropdown display
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+
+            //dropdown show details
+            $(".js-select2").each(function(){
+                $(this).on('select2:close', function (e){
+                    if($(this).val() == "Please chooses") {
+                        $('.js-show-service').slideUp();
+                    }
+                    else {
+                        $('.js-show-service').slideUp();
+                        $('.js-show-service').slideDown();
+                    }
+                });
+            });
+        })
+
+    </script>
+    <!--===============================================================================================-->
+    <script src="../libraries/daterangepicker/moment.min.js"></script>
+    <script src="../libraries/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="../libraries/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="../libraries/noui/nouislider.min.js"></script>
+    <!--
+    <script>
+        var filterBar = document.getElementById('filter-bar');
+
+        noUiSlider.create(filterBar, {
+            start: [ 1500, 3900 ],
+            connect: true,
+            range: {
+                'min': 1500,
+                'max': 7500
+            }
+        });
+
+        var skipValues = [
+        document.getElementById('value-lower'),
+        document.getElementById('value-upper')
+        ];
+
+        filterBar.noUiSlider.on('update', function( values, handle ) {
+            skipValues[handle].innerHTML = Math.round(values[handle]);
+            $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+            $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+        });
+    </script>
+    -->
+
+    <script src="./js/displayResult.js"></script>
+</body>
+</html>

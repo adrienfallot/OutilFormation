@@ -126,6 +126,8 @@ var AnalyseDataModule = (function ($)
 
         var VAEScore = canUseVAE();
         console.log("VAE : "+VAEScore+"/90");
+
+        window.location.replace("./result.html?cif="+CIFScore+"&vae="+VAEScore);
     }
 
     function canUseCIF()

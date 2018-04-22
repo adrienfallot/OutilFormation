@@ -35,7 +35,7 @@
             analyseData.analyseFormResult($('.validate-form').serializeArray());
         }
 
-        return check;
+        return false;
     });
 
 
