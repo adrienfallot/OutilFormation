@@ -44,7 +44,7 @@
                     <input class="input100" type="date" name="historyContractEndDate`+proHistoryCpt+`" placeholder="Entrer la date de fin">
                 </div>
 
-                <button type="button" class="wrap-input100 contact100-form-btn contact100-form-btn-red" onClick="$(this).parent().remove();numberOfProHistory--;">
+                <button type="button" class="wrap-input100 contact100-form-btn contact100-form-btn-red" onClick="$(this).parent().remove();">
                     <span>
                         Supprimer
                     </span>
@@ -128,7 +128,7 @@
                     <input class="input100" type="number" name="historyTrainingDuration`+trainingHistoryCpt+`" placeholder="Entrer la durée">
                 </div>
 
-                <button type="button" class="wrap-input100 contact100-form-btn contact100-form-btn-red" onClick="$(this).parent().remove();numberOfTrainingHistory--;">
+                <button type="button" class="wrap-input100 contact100-form-btn contact100-form-btn-red" onClick="$(this).parent().remove();">
                     <span>
                         Supprimer
                     </span>

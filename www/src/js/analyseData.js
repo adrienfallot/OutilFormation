@@ -83,6 +83,13 @@ var AnalyseDataModule = (function ($)
 
         for(var i = 0; i < numberOfProHistory; i++)
         {
+            //numberOfProHistory ne diminue pas quand l'un est supprimé, il faut donc sauter cet index
+            // #Quick&Dirty
+            if(formDataDict["historyContractType"+i] == null)
+            {
+                continue;
+            }
+
             var contract = new Object();
 
             contract.contractType = formDataDict["historyContractType"+i].value;
@@ -96,6 +103,13 @@ var AnalyseDataModule = (function ($)
 
         for(var i = 0; i < numberOfTrainingHistory; i++)
         {
+            //numberOfTrainingHistory ne diminue pas quand l'un est supprimé, il faut donc sauter cet index
+            // #Quick&Dirty
+            if(formDataDict["historyTrainingType"+i] == null)
+            {
+                continue;
+            }
+
             var training = new Object();
 
             training.trainingType = formDataDict["historyTrainingType"+i].value;
