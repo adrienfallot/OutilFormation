@@ -53,6 +53,24 @@
 						</div>
 					</div>
 
+					<div class="wrap-input100 input100-select bg1">
+						<span class="label-input100">Dommaine d'activité actuel *</span>
+						<div>
+							<select class="js-select2" name="actualActivityField">
+								<option value="0">Merci de choisir une valeur</option>
+								<option value="1">Autre</option>
+								<option value="2">Informatique</option>
+								<option value="3">Vente</option>
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+					</div>
+
+					<div class="wrap-input100 validate-input bg1" data-validate="Merci d'entrer la date de début">
+						<span class="label-input100">Date de début *</span>
+						<input class="input100" type="date" name="actualStartDate" placeholder="Entrer la date de début">
+					</div>
+
 					<div class="wrap-input100 validate-input bg1" data-validate="Merci d'entrer votre salaire mensuel brut actuel">
 						<span class="label-input100">Salaire mensuel brut actuel *</span>
 						<input class="input100" type="number" name="actualSalary" placeholder="Entrer votre salaire mensuel brut actuel">
@@ -68,38 +86,39 @@
 								<option value="0">Merci de choisir une valeur</option>
 								<option value="1">Reconversion</option>
 								<option value="2">Accéder à un niveau de qualification supérieure</option>
-								<option value="3">enrichir ses connaissances</option>
+								<option value="3">Enrichir ses connaissances</option>
 								<option value="4">Préparation examen</option>
+								<option value="5">Obtenir un diplôme ou titre professionnel national délivré par l’État</option>
+								<option value="6">Obtenir un diplôme délivré par un établissement d’enseignement supérieur</option>
+								<option value="7">Obtenir un titre délivré par un organisme de formation ou une chambre consulaire</option>
+								<option value="8">Obtenir un certificat de qualification professionnelle</option>
+								<option value="9">Valider des aquis professionels, benevole, etc</option>
+								<option value="10">Valider des aquis électoraux (syndicat, politique, etc)</option>
 							</select>
 							<div class="dropDownSelect2"></div>
 						</div>
 					</div>
 
 					<div class="wrap-input100 input100-select bg1">
-						<span class="label-input100">Dans votre dommaine d'activité ? *</span>
-
-						<div class="contact100-form-radio m-t-15">
-							<input class="input-radio100" id="radio1" type="radio" name="activityField" value="0" checked="checked">
-							<label class="label-radio100" for="radio1">
-								Non
-							</label>
-						</div>
-
-						<div class="contact100-form-radio">
-							<input class="input-radio100" id="radio2" type="radio" name="activityField" value="1">
-							<label class="label-radio100" for="radio2">
-								Oui
-							</label>
+						<span class="label-input100">Dommaine d'activité *</span>
+						<div>
+							<select class="js-select2" name="trainingActivityField">
+								<option value="0">Merci de choisir une valeur</option>
+								<option value="1">Autre</option>
+								<option value="2">Informatique</option>
+								<option value="3">Vente</option>
+							</select>
+							<div class="dropDownSelect2"></div>
 						</div>
 					</div>
 
-					<div class="wrap-input100 validate-input bg1" data-validate="Merci d'entrer prévu de début">
-						<span class="label-input100">Date de début prévu *</span>
+					<div class="wrap-input100 validate-input bg1" data-validate="Merci d'entrer la date de début prévue">
+						<span class="label-input100">Date de début prévue *</span>
 						<input class="input100" type="date" name="trainingDate" placeholder="Entrer la date de début prévue">
 					</div>
 
 					<div class="wrap-input100 validate-input bg1" data-validate="Merci d'entrer la durée prévue (en heure)">
-						<span class="label-input100">Durée prévue en heure *</span>
+						<span class="label-input100">Durée prévue en heure * (en temps complet prendre 7/jour sur des mois de 30 jours)</span>
 						<input class="input100" type="number" name="trainingDuration" placeholder="Entrer la durée prévue">
 					</div>
 

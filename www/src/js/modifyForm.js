@@ -21,6 +21,19 @@
                     </div>
                 </div>
 
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Dommaine d'activité *</span>
+                    <div>
+                        <select class="js-select2" name="historyActivityField`+proHistoryCpt+`">
+                            <option value="0">Merci de choisir une valeur</option>
+                            <option value="1">Autre</option>
+                            <option value="2">Informatique</option>
+                            <option value="3">Vente</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                </div>
+
                 <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate="Merci d'entrer la date de début">
                     <span class="label-input100">Date de début *</span>
                     <input class="input100" type="date" name="historyContractStartDate`+proHistoryCpt+`" placeholder="Entrer la date de début">
@@ -82,6 +95,19 @@
                             <option value="1">CIF</option>
                             <option value="2">VAE</option>
                             <option value="3">Bilan de compétences</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                </div>
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Dommaine d'activité *</span>
+                    <div>
+                        <select class="js-select2" name="historyTrainingActivityField`+trainingHistoryCpt+`">
+                            <option value="0">Merci de choisir une valeur</option>
+                            <option value="1">Autre</option>
+                            <option value="2">Informatique</option>
+                            <option value="3">Vente</option>
                         </select>
                         <div class="dropDownSelect2"></div>
                     </div>
