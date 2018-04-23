@@ -68,18 +68,17 @@ var AnalyseDataModule = (function ($)
             const data = formData[dataIndex];
             formDataDict[data.name] = data.value;
         }
-       
 
-        userData.actualContractType = formDataDict["actualContractType"].value;
-        userData.actualActivityField = formDataDict["actualActivityField"].value;
-        userData.actualSalary = formDataDict["actualSalary"].value;
-        userData.actualStartDate = formDataDict["actualStartDate"].value;
+        userData.actualContractType = formDataDict["actualContractType"];
+        userData.actualActivityField = formDataDict["actualActivityField"];
+        userData.actualSalary = formDataDict["actualSalary"];
+        userData.actualStartDate = formDataDict["actualStartDate"];
 
-        userData.trainingObjectif = formDataDict["trainingObjectif"].value;
-        userData.trainingActivityField = formDataDict["trainingActivityField"].value;
-        userData.trainingStartDate = formDataDict["trainingDate"].value;
-        userData.trainingDuration = formDataDict["trainingDuration"].value;
-        userData.trainingTypeTime = formDataDict["trainingTypeTime"].value;
+        userData.trainingObjectif = formDataDict["trainingObjectif"];
+        userData.trainingActivityField = formDataDict["trainingActivityField"];
+        userData.trainingStartDate = formDataDict["trainingDate"];
+        userData.trainingDuration = formDataDict["trainingDuration"];
+        userData.trainingTypeTime = formDataDict["trainingTypeTime"];
 
         for(var i = 0; i < numberOfProHistory; i++)
         {
@@ -92,10 +91,10 @@ var AnalyseDataModule = (function ($)
 
             var contract = new Object();
 
-            contract.contractType = formDataDict["historyContractType"+i].value;
-            contract.activityField = formDataDict["historyActivityField"+i].value;
-            contract.startDate = formDataDict["historyContractStartDate"+i].value;
-            contract.endDate = formDataDict["historyContractEndDate"+i].value;
+            contract.contractType = formDataDict["historyContractType"+i];
+            contract.activityField = formDataDict["historyActivityField"+i];
+            contract.startDate = formDataDict["historyContractStartDate"+i];
+            contract.endDate = formDataDict["historyContractEndDate"+i];
         
             userData.contractHistory.push(contract)
         }
@@ -112,11 +111,11 @@ var AnalyseDataModule = (function ($)
 
             var training = new Object();
 
-            training.trainingType = formDataDict["historyTrainingType"+i].value;
-            training.activityField = formDataDict["historyTrainingActivityField"+i].value;
-            training.startDate = formDataDict["historyTrainingStartDate"+i].value;
-            training.endDate = formDataDict["historyTrainingEndDate"+i].value;
-            training.duration = formDataDict["historyTrainingDuration"+i].value;
+            training.trainingType = formDataDict["historyTrainingType"+i];
+            training.activityField = formDataDict["historyTrainingActivityField"+i];
+            training.startDate = formDataDict["historyTrainingStartDate"+i];
+            training.endDate = formDataDict["historyTrainingEndDate"+i];
+            training.duration = formDataDict["historyTrainingDuration"+i];
 
             userData.trainingHistory.push(training)
         }
@@ -169,9 +168,9 @@ var AnalyseDataModule = (function ($)
             //historique CDI
             if(userData.actualContractType == contractTypeEnum.CDI)
             {
-                var diffActualResult = new Date(userData.actualStartDate).getTime() - Date.now().getTime();
+                var diffActualResult = new Date(userData.actualStartDate).getTime() - Date.now();
                 var dateDiffActual = new Date(diffResult);
-                var daysDiffActual = dateDiff.getTime() / 86400000;
+                var daysDiffActual = dateDiffActual.getTime() / 86400000;
 
                 var totalDurationInDay = daysDiffActual;
                 var oneYearContract = false;
@@ -212,9 +211,9 @@ var AnalyseDataModule = (function ($)
                 ////////////////// contrat actuel //////////////////////////
 
                 //calcul du nombre de jour depuis le début du contrat actuel
-                var diffActualResult = new Date(userData.actualStartDate).getTime() - Date.now().getTime();
+                var diffActualResult = new Date(userData.actualStartDate).getTime() - Date.now();
                 var dateDiffActual = new Date(diffResult);
-                var daysDiffActual = dateDiff.getTime() / 86400000;
+                var daysDiffActual = dateDiffActual.getTime() / 86400000;
 
                 //On ajoute la durée (en jour) du contract actuel au total
                 totalDurationInDay += daysDiffActual;
@@ -229,7 +228,7 @@ var AnalyseDataModule = (function ($)
                 else 
                 {
                     //Sinon on calcul le temps écouler depuis le début de l'année
-                    var diffFromYearStart = startOneYearAgo - Date.now().getTime(); //Total temps passé depuis de début de l'année
+                    var diffFromYearStart = startOneYearAgo - Date.now(); //Total temps passé depuis de début de l'année
                     var dateDiffFromYearStart = new Date(diffFromYearStart);
                     var daysFromYearStart = dateDiffFromYearStart / 86400000;
 
@@ -247,7 +246,7 @@ var AnalyseDataModule = (function ($)
                 else 
                 {
                     //Sinon on calcul le temps écouler depuis le début des 5 dernières années
-                    var diffFrom5YearStart = startFiveYearAgo - Date.now().getTime(); //Total temps passé depuis de début des 5 dernières année
+                    var diffFrom5YearStart = startFiveYearAgo - Date.now(); //Total temps passé depuis de début des 5 dernières année
                     var dateDiffFrom5YearStart = new Date(diffFrom5YearStart);
                     var daysFrom5YearStart = dateDiffFrom5YearStart / 86400000;
 
@@ -391,7 +390,7 @@ var AnalyseDataModule = (function ($)
 
         ////////////////////// Délai acceptation employeur ///////////////
         {
-            var diffResult = new Date(userData.trainingStartDate).getTime() - Date.now().getTime();
+            var diffResult = new Date(userData.trainingStartDate).getTime() - Date.now();
             var dateDiff = new Date(diffResult);
             var monthDiff = dateDiff.getTime() / 2592000000;
         
@@ -422,7 +421,7 @@ var AnalyseDataModule = (function ($)
             }
             score += 10
         }
-        
+
         ////////////////////// Durée //////////////////////
         {
             //La durée minimale d'un Cif est de 30 heures. 
@@ -611,7 +610,7 @@ var AnalyseDataModule = (function ($)
 
         ////////////////////// Délai acceptation employeur ///////////////
         {
-            var diffResult = new Date(userData.trainingStartDate).getTime() - Date.now().getTime();
+            var diffResult = new Date(userData.trainingStartDate).getTime() - Date.now();
             var dateDiff = new Date(diffResult);
             var monthDiff = dateDiff.getTime() / 2592000000;
 
