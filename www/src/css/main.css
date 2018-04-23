@@ -730,3 +730,33 @@ textarea.input100 {
     padding: 15px 0px 0 0px;
   }
 }
+
+.link{
+  margin-top: 5%;
+}
+details{
+  margin-top: 2%;
+}
+details summary{
+  margin-bottom: 2%;
+}
+
+.square-list li{
+  list-style-type: square;
+  margin-left: 5%;
+}
+
+.circle-list li{
+  list-style-type: circle;
+  margin-left: 5%;
+}
+details h3{
+  margin-bottom: 3%;
+}
+
+.circle-list{
+  margin-bottom: 2%;
+}
+details p{
+  margin-bottom: 1%;
+}
