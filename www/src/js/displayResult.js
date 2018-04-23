@@ -51,7 +51,6 @@ jQuery(document).ready(function($)
             <fieldset class="contact100-form wrap-input100">
                 <legend><img src="images/vae.jpg" width="15%" alt="VAE Logo"> La Validation des Acquis d'Expérience</legend>
                 <p>Toute personne, quels que soient son âge, sa nationalité, son statut et son niveau de formation, qui justifie d’au moins 1 an d’expérience en rapport direct avec la certification visée, peut prétendre à la VAE. Cette certification qui peut être un diplôme, un titre ou un certificat de qualification professionnelle doit être inscrite au Répertoire national des certifications professionnelles (RNCP).</p>
-                <a class="link" href="http://www.vae.gouv.fr/">http://www.vae.gouv.fr/</a>
                 <details>
                     <summary>Démarche</summary>
                     <p>Vous transmettez à l’autorité certificatrice un dossier décrivant votre expérience. Ensuite, selon la certification, vous serez mis en situation professionnelle devant un jury ou vous lui présenterez votre dossier. Dans les deux cas, le jury s’entretiendra avec vous et prendra une décision de validation totale, partielle ou d’un refus de validation. L’ensemble de la démarche dure entre huit et douze mois (de la définition du projet jusqu’aux épreuves de validation devant le jury).</p>
@@ -62,6 +61,7 @@ jQuery(document).ready(function($)
                         <li><a href="tools/vae-tableauDeBord.pdf">Tableau de bord</a></li>
                     </ul>
                 </details>
+                <a class="link" href="http://www.vae.gouv.fr/">http://www.vae.gouv.fr/</a>
             </fieldset>
             `
         )
@@ -74,7 +74,6 @@ jQuery(document).ready(function($)
             <fieldset class="contact100-form wrap-input100">
                 <legend><img src="images/cif.jpg" width="15%" alt="CIF Logo"> Le Congès Individuel de Formation</legend>
                 <p>Le congé individuel de formation (Cif) est un congé qui permet au salarié de s'absenter de son poste afin de suivre une formation pour se qualifier, évoluer ou se reconvertir. Le Cif est ouvert sous conditions. Il est accordé sur demande à l'employeur. Le salarié est rémunéré pendant toute la durée de la formation.</p>
-                <a class="link" href="https://www.service-public.fr/particuliers/vosdroits/F14018">https://www.service-public.fr/particuliers/vosdroits/F14018</a>
                 <details>
                     <summary>Démarche</summary>
                     <h3>Auprès de l'employeur</h3>
@@ -112,6 +111,7 @@ jQuery(document).ready(function($)
                     <p>Le délai recommandé de dépôt de la demande est de 2 et 4 mois avant le début de la formation.</p>
                     <p>La demande peut être refusée notamment pour des raisons de coût.</p>
                 </details>
+                <a class="link" href="https://www.service-public.fr/particuliers/vosdroits/F14018">https://www.service-public.fr/particuliers/vosdroits/F14018</a>
             </fieldset>
             `
         )
